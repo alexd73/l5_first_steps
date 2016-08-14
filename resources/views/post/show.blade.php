@@ -2,12 +2,13 @@
 @section('header'){!!  $post->title !!}@endsection
 
 @section('content')
-        <article>
-            <ul class="nav nav-tabs nav-justified">
-                <li>{{ link_to_route('post.edit', 'Edit', ['id' => $post->id]) }}</li>
-                <li>{{ link_to_route('post.destroy', 'Delete', ['id' => $post->id]) }}</li>
-            </ul>
-            <p>{!! $post->content !!}</p>
-            <p>Published: {{ $post->published_at }}</p>
-        </article>
+    <article>
+        {{ Form::open(array('url' => 'post/' . $post->id, 'class' => 'pull-right')) }}
+        {{ Form::hidden('_method', 'DELETE') }}
+        {{ Form::submit('Delete', ['class' => 'btn btn-warning']) }}
+        {{ link_to_route('post.edit', 'Edit', ['id' => $post->id], ['class' => 'btn btn-info ']) }}
+        {{ Form::close() }}
+        <p>{!! $post->content !!}</p>
+        <p>Published: {{ $post->published_at }}</p>
+    </article>
 @endsection

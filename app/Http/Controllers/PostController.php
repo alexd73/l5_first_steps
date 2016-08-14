@@ -58,6 +58,19 @@ class PostController extends Controller
     }
 
     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('post');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
