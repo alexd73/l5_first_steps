@@ -47,7 +47,14 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Show posts <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>{!! link_to_route('post', 'Published') !!}</li>
+                            <li>{!! link_to_route('post.unpublished', 'UnPublished') !!}</li>
+                        </ul>
+                    </li>
+                    <li>{!! link_to_route('post.create', 'New Post') !!}</li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -72,7 +79,18 @@
         </div>
     </nav>
 
-    @yield('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h2>@yield('header', 'Привет')</h2></div>
+                    <div class="panel-body">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>

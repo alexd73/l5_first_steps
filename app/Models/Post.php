@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $fillable = ['slug', 'title', 'excerpt', 'content', 'published', 'published_at'];
+
     /**
      * Возвращает список опубликованных постов
      * @return mixed
@@ -18,6 +20,7 @@ class Post extends Model
           ->get();
         return $posts;
     }
+
     public function getUnPublishedPosts()
     {
         $posts = Post::latest('published_at')

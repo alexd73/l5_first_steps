@@ -23,3 +23,5 @@ Route::get('unpublished', ['as' => 'post.unpublished', 'uses' => 'PostController
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+$router->resource('post', 'PostController');
